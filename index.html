@@ -9,7 +9,7 @@
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/61/61457.png" type="image/x-icon">
 
     <style>
-        /* Allow page scrolling */
+        /* Prevent horizontal and vertical scrolling */
         html, body {
             margin: 0;
             padding: 0;
@@ -17,7 +17,14 @@
             background-color: black;
             font-family: 'Bowlby One', sans-serif;
             color: white;
-            overflow-y: auto;
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
         }
 
         header {
@@ -29,12 +36,12 @@
             position: sticky;
             top: 0;
             z-index: 10;
+            width: 100%;
         }
 
         h1 {
             font-size: 50px;
             margin: 0;
-            display: inline-block;
             transition: transform 0.3s ease;
         }
 
@@ -64,30 +71,30 @@
             box-shadow: 0px 0px 15px 5px #008CFF;
         }
 
-        /* Unblocked Proxies Box */
-        .proxy-box {
+        /* Proxy container */
+        .proxy-container {
             background-color: #222;
             border-radius: 20px;
-            margin: 50px auto;
-            max-width: 600px;
+            margin: 20px;
             padding: 20px;
-            text-align: center;
+            max-width: 600px;
             box-shadow: 0px 0px 10px 3px #444;
+            text-align: center;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .proxy-box:hover {
+        .proxy-container:hover {
             transform: scale(1.02);
             box-shadow: 0px 0px 20px 5px #008CFF;
         }
 
-        .proxy-box h2 {
+        .proxy-container h2 {
             margin-bottom: 20px;
             font-size: 32px;
             color: #00AFFF;
         }
 
-        /* Proxy Buttons with Hover Effects */
+        /* Proxy buttons */
         .proxy-buttons {
             display: flex;
             flex-wrap: wrap;
@@ -96,11 +103,10 @@
         }
 
         .proxy-button {
-            display: inline-block;
             width: 120px;
             height: 60px;
             line-height: 60px;
-            background-color: #000;
+            background-color: black;
             color: white;
             border: 2px solid #008CFF;
             border-radius: 15px;
@@ -141,18 +147,21 @@
             transform: scale(1.1);
         }
     </style>
+
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Header -->
     <header>
         <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
         <div id="clock" class="clock"></div>
     </header>
 
-    <!-- Unblocked Proxies Box -->
-    <div class="proxy-box">
+    <!-- Proxy Container -->
+    <div class="proxy-container">
         <h2>Unblocked Proxies</h2>
         <div id="proxy-buttons" class="proxy-buttons"></div>
-        <div class="pagination" id="pagination"></div>
+        <div id="pagination" class="pagination"></div>
     </div>
 
     <script>
