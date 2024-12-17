@@ -9,22 +9,15 @@
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/61/61457.png" type="image/x-icon">
 
     <style>
-        /* Prevent horizontal and vertical scrolling */
+        /* Allow page scrolling */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
-        }
-
-        body {
             background-color: black;
             font-family: 'Bowlby One', sans-serif;
             color: white;
-            display: flex;
-            flex-direction: column;
-            text-align: center;
-            position: relative;
+            overflow-y: auto;
         }
 
         header {
@@ -57,111 +50,107 @@
             color: white;
         }
 
-        .nav-buttons {
-            display: flex;
-            gap: 20px; /* Increased gap between buttons */
-        }
-
-        .nav-button {
-            background-color: black;
-            color: white;
-            padding: 15px 25px; /* Increased padding for larger size */
-            border-radius: 20px;
-            font-size: 18px; /* Increased font size */
-            text-decoration: none;
-            text-align: center;
-            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
-        }
-
-        .nav-button:hover {
-            transform: scale(1.1);
-            background-color: black; /* Keep the background black */
-            box-shadow: 0px 0px 15px 4px #008CFF; /* Blue highlight with glow effect */
-            color: #008CFF; /* Change text color to blue */
-        }
-
         .clock {
-            font-size: 20px; /* Slightly smaller font size */
-            color: white;
+            font-size: 20px;
             font-weight: bold;
             background-color: #444;
-            padding: 5px 10px; /* Reduced padding to make the box smaller */
-            border-radius: 10px; /* Keeps the rounded corners */
+            padding: 5px 10px;
+            border-radius: 10px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .clock:hover {
-            transform: scale(1.2); /* Zoom effect on hover */
-            box-shadow: 0px 0px 15px 5px #008CFF; /* Glow effect on hover */
+            transform: scale(1.2);
+            box-shadow: 0px 0px 15px 5px #008CFF;
         }
 
-        /* Snow effect container */
-        .snow-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0; /* Behind all content */
-            pointer-events: none; /* Allow interaction with elements above */
+        /* Unblocked Proxies Box */
+        .proxy-box {
+            background-color: #222;
+            border-radius: 20px;
+            margin: 50px auto;
+            max-width: 600px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0px 0px 10px 3px #444;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .snowflake, .snowball {
-            position: absolute;
-            top: -10px;
+        .proxy-box:hover {
+            transform: scale(1.02);
+            box-shadow: 0px 0px 20px 5px #008CFF;
+        }
+
+        .proxy-box h2 {
+            margin-bottom: 20px;
+            font-size: 32px;
+            color: #00AFFF;
+        }
+
+        /* Proxy Buttons */
+        .proxy-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .proxy-button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #000;
             color: white;
-            font-size: 10px;
-            opacity: 0.8;
-            animation: fall linear infinite;
+            border: 2px solid #008CFF;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 18px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
         }
 
-        @keyframes fall {
-            0% {
-                transform: translateY(-10px);
-            }
-            100% {
-                transform: translateY(110vh); /* Fall beyond viewport height */
-            }
+        .proxy-button:hover {
+            transform: scale(1.1);
+            background-color: #008CFF;
+            box-shadow: 0px 0px 15px 5px #00AFFF;
+            color: white;
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 40px;
-            }
+        /* Pagination Buttons */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-            .nav-buttons {
-                display: block;
-                text-align: center;
-                margin-top: 10px;
-            }
+        .pagination-button {
+            padding: 8px 12px;
+            margin: 0 5px;
+            background-color: #333;
+            color: white;
+            border: 1px solid #008CFF;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
 
-            .nav-button {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-
-            .clock {
-                font-size: 16px; /* Smaller clock for mobile */
-                padding: 3px 6px;
-            }
+        .pagination-button:hover {
+            background-color: #008CFF;
+            color: white;
+            transform: scale(1.1);
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
-        <div class="nav-buttons">
-            <a href="https://your-apps-url.com" class="nav-button">APPS</a>
-            <a href="https://your-games-url.com" class="nav-button">GAMES</a>
-            <a href="https://your-proxies-url.com" class="nav-button">PROXIES</a>
-            <a href="https://your-exploits-url.com" class="nav-button">EXPLOITS</a>
-            <a href="https://unblockzone.github.io/settings/" class="nav-button">SETTINGS</a>
-        </div>
         <div id="clock" class="clock"></div>
     </header>
 
-    <div class="snow-container" id="snowContainer"></div> <!-- Snow effect -->
+    <!-- Unblocked Proxies Box -->
+    <div class="proxy-box">
+        <h2>Unblocked Proxies</h2>
+        <div id="proxy-buttons" class="proxy-buttons"></div>
+        <div class="pagination" id="pagination"></div>
+    </div>
 
     <script>
         // Real-time clock
@@ -174,35 +163,74 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Snow effect generator
-        const snowContainer = document.getElementById('snowContainer');
+        // Proxy URLs
+        const proxyURLs = [
+            { name: "Proxy 1", url: "https://example1.com" },
+            { name: "Proxy 2", url: "https://example2.com" },
+            { name: "Proxy 3", url: "https://example3.com" },
+            { name: "Proxy 4", url: "https://example4.com" },
+            { name: "Proxy 5", url: "https://example5.com" },
+            { name: "Proxy 6", url: "https://example6.com" },
+            { name: "Proxy 7", url: "https://example7.com" },
+            { name: "Proxy 8", url: "https://example8.com" },
+            { name: "Proxy 9", url: "https://example9.com" },
+            { name: "Proxy 10", url: "https://example10.com" },
+            { name: "Proxy 11", url: "https://example11.com" },
+            { name: "Proxy 12", url: "https://example12.com" },
+            { name: "Proxy 13", url: "https://example13.com" },
+            { name: "Proxy 14", url: "https://example14.com" },
+            { name: "Proxy 15", url: "https://example15.com" },
+            { name: "Proxy 16", url: "https://example16.com" },
+            { name: "Proxy 17", url: "https://example17.com" },
+            { name: "Proxy 18", url: "https://example18.com" },
+            { name: "Proxy 19", url: "https://example19.com" },
+            { name: "Proxy 20", url: "https://example20.com" }
+        ];
 
-        function createSnowflake() {
-            const snowflake = document.createElement('div');
-            snowflake.classList.add('snowflake');
-            snowflake.textContent = '❄';
-            snowflake.style.left = Math.random() * 100 + 'vw';
-            snowflake.style.animationDuration = Math.random() * 2 + 2 + 's';
-            snowflake.style.fontSize = Math.random() * 10 + 10 + 'px';
-            snowflake.style.opacity = Math.random() * 0.8 + 0.2;
+        const proxiesPerPage = 5;
+        let currentPage = 1;
 
-            snowContainer.appendChild(snowflake);
-            setTimeout(() => snowflake.remove(), 5000);
+        function displayProxies(page) {
+            const startIndex = (page - 1) * proxiesPerPage;
+            const endIndex = startIndex + proxiesPerPage;
+            const proxiesToShow = proxyURLs.slice(startIndex, endIndex);
+
+            const buttonsContainer = document.getElementById('proxy-buttons');
+            buttonsContainer.innerHTML = "";
+
+            proxiesToShow.forEach(proxy => {
+                const button = document.createElement('a');
+                button.href = proxy.url;
+                button.textContent = proxy.name;
+                button.classList.add('proxy-button');
+                button.target = "_blank";
+                buttonsContainer.appendChild(button);
+            });
+
+            renderPagination();
         }
 
-        function createSnowball() {
-            const snowball = document.createElement('div');
-            snowball.classList.add('snowball');
-            snowball.textContent = '⚪';
-            snowball.style.left = Math.random() * 100 + 'vw';
-            snowball.style.animationDuration = Math.random() * 2 + 1 + 's';
+        function renderPagination() {
+            const pageCount = Math.ceil(proxyURLs.length / proxiesPerPage);
+            const paginationContainer = document.getElementById('pagination');
+            paginationContainer.innerHTML = "";
 
-            snowContainer.appendChild(snowball);
-            setTimeout(() => snowball.remove(), 5000);
+            for (let i = 1; i <= pageCount; i++) {
+                const button = document.createElement('div');
+                button.textContent = i;
+                button.classList.add('pagination-button');
+                if (i === currentPage) {
+                    button.style.backgroundColor = "#008CFF";
+                }
+                button.addEventListener('click', () => {
+                    currentPage = i;
+                    displayProxies(currentPage);
+                });
+                paginationContainer.appendChild(button);
+            }
         }
 
-        setInterval(createSnowflake, 150);
-        setInterval(createSnowball, 100);
+        displayProxies(currentPage);
     </script>
 </body>
 </html>
