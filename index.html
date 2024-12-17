@@ -8,18 +8,25 @@
     <!-- Favicon link -->
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/61/61457.png" type="image/x-icon">
 
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
+
     <style>
-        /* Prevent horizontal and vertical scrolling */
-        html, body {
+        /* Global Styles */
+        * {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
+        }
+
+        html, body {
             height: 100%;
             overflow: hidden;
+            font-family: 'Bowlby One', sans-serif;
         }
 
         body {
             background-color: black;
-            font-family: 'Bowlby One', sans-serif;
             color: white;
             display: flex;
             flex-direction: column;
@@ -41,7 +48,6 @@
         h1 {
             font-size: 50px;
             margin: 0;
-            display: inline-block;
             transition: transform 0.3s ease;
         }
 
@@ -94,17 +100,16 @@
             box-shadow: 0px 0px 15px 5px #008CFF;
         }
 
-        /* Proxies Box */
+        /* Proxies Container */
         .proxies-container {
             margin: 20px auto;
             width: 90%;
-            max-width: 800px;
+            max-width: 700px;
             background-color: #222;
             border-radius: 15px;
             padding: 20px;
             box-shadow: 0px 0px 10px 2px #008CFF;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            position: relative;
         }
 
         .proxies-container:hover {
@@ -128,7 +133,7 @@
         .proxy-button {
             background-color: black;
             color: white;
-            padding: 10px;
+            padding: 15px 10px;
             border-radius: 10px;
             font-size: 16px;
             text-decoration: none;
@@ -142,26 +147,35 @@
             color: #00AFFF;
         }
 
+        /* Pagination Buttons */
         .nav-pages {
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 20px;
         }
 
         .page-button {
-            background-color: black;
+            background-color: #008CFF;
             color: white;
-            padding: 10px 15px;
-            border-radius: 10px;
-            font-size: 14px;
+            padding: 10px 20px;
+            border-radius: 20px;
+            font-size: 16px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
             cursor: pointer;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: none;
         }
 
         .page-button:hover {
             transform: scale(1.1);
-            box-shadow: 0px 0px 15px 5px #008CFF;
-            color: #00AFFF;
+            box-shadow: 0px 0px 15px 5px #00AFFF;
+            background-color: #005F99;
+        }
+
+        .icon {
+            font-size: 18px;
         }
     </style>
 </head>
@@ -183,8 +197,12 @@
         <h2>Unblocked Proxies</h2>
         <div class="button-grid" id="buttonGrid"></div>
         <div class="nav-pages">
-            <button class="page-button" onclick="changePage(-1)">Previous</button>
-            <button class="page-button" onclick="changePage(1)">Next</button>
+            <button class="page-button" onclick="changePage(-1)">
+                <span class="icon">⏪</span> Previous
+            </button>
+            <button class="page-button" onclick="changePage(1)">
+                Next <span class="icon">⏩</span>
+            </button>
         </div>
     </div>
 
@@ -201,10 +219,10 @@
 
         // Proxy buttons
         const proxyUrls = [
-            "https://proxy1.com", "https://proxy2.com", "https://proxy3.com", "https://proxy4.com", "https://proxy5.com",
-            "https://proxy6.com", "https://proxy7.com", "https://proxy8.com", "https://proxy9.com", "https://proxy10.com",
-            "https://proxy11.com", "https://proxy12.com", "https://proxy13.com", "https://proxy14.com", "https://proxy15.com",
-            "https://proxy16.com", "https://proxy17.com", "https://proxy18.com", "https://proxy19.com", "https://proxy20.com"
+            "https://proxy1.com", "https://proxy2.com", "https://proxy3.com", "https://proxy4.com",
+            "https://proxy5.com", "https://proxy6.com", "https://proxy7.com", "https://proxy8.com",
+            "https://proxy9.com", "https://proxy10.com", "https://proxy11.com", "https://proxy12.com",
+            "https://proxy13.com", "https://proxy14.com", "https://proxy15.com", "https://proxy16.com"
         ];
 
         let currentPage = 0;
@@ -212,8 +230,8 @@
         function renderButtons(page) {
             const grid = document.getElementById('buttonGrid');
             grid.innerHTML = "";
-            const start = page * 5;
-            const end = start + 5;
+            const start = page * 4;
+            const end = start + 4;
 
             for (let i = start; i < end && i < proxyUrls.length; i++) {
                 const button = document.createElement('a');
@@ -226,7 +244,7 @@
         }
 
         function changePage(direction) {
-            const totalPages = Math.ceil(proxyUrls.length / 5);
+            const totalPages = Math.ceil(proxyUrls.length / 4);
             currentPage += direction;
 
             if (currentPage < 0) currentPage = 0;
