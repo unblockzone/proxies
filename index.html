@@ -102,7 +102,7 @@
 
         /* Proxies Container */
         .proxies-container {
-            margin: 20px auto;
+            margin: 50px auto;
             width: 90%;
             max-width: 700px;
             background-color: #222;
@@ -121,6 +121,8 @@
             font-size: 30px;
             color: #00AFFF;
             margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700; /* Medium Bold */
         }
 
         .button-grid {
@@ -179,6 +181,47 @@
         .icon {
             font-size: 18px;
         }
+
+        /* Snowfall effect */
+        .snow-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .snowflake, .snowball {
+            position: absolute;
+            top: -10px;
+            color: white;
+            font-size: 10px;
+            opacity: 0.8;
+            animation: fall linear infinite;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-10px);
+            }
+            100% {
+                transform: translateY(110vh);
+            }
+        }
+
+        /* Snowflakes */
+        .snowflake {
+            animation-duration: 3s; /* Faster falling */
+            font-size: 12px;
+        }
+
+        /* Snowballs */
+        .snowball {
+            animation-duration: 2.5s; /* Faster falling */
+            font-size: 15px;
+        }
     </style>
 </head>
 <body>
@@ -207,6 +250,9 @@
             </button>
         </div>
     </div>
+
+    <!-- Snowfall Effect -->
+    <div class="snow-container" id="snowContainer"></div>
 
     <script>
         // Real-time clock
@@ -257,6 +303,34 @@
 
         // Initial render
         renderButtons(currentPage);
+
+        // Snowfall effect generation
+        function generateSnowflakes() {
+            const snowContainer = document.getElementById('snowContainer');
+
+            // Create snowflakes
+            for (let i = 0; i < 100; i++) {
+                const snowflake = document.createElement('div');
+                snowflake.className = 'snowflake';
+                snowflake.style.left = `${Math.random() * 100}vw`;
+                snowflake.style.animationDuration = `${3 + Math.random() * 2}s`;
+                snowflake.textContent = '❄';
+                snowContainer.appendChild(snowflake);
+            }
+
+            // Create snowballs
+            for (let i = 0; i < 50; i++) {
+                const snowball = document.createElement('div');
+                snowball.className = 'snowball';
+                snowball.style.left = `${Math.random() * 100}vw`;
+                snowball.style.animationDuration = `${2.5 + Math.random() * 1.5}s`;
+                snowball.textContent = '⚪';
+                snowContainer.appendChild(snowball);
+            }
+        }
+
+        // Start snowfall on page load
+        window.onload = generateSnowflakes;
     </script>
 </body>
 </html>
