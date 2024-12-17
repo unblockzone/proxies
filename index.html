@@ -14,17 +14,17 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            background-color: black;
-            font-family: 'Bowlby One', sans-serif;
-            color: white;
+            overflow: hidden;
         }
 
         body {
+            background-color: black;
+            font-family: 'Bowlby One', sans-serif;
+            color: white;
             display: flex;
             flex-direction: column;
-            align-items: center;
-            justify-content: center;
             text-align: center;
+            position: relative;
         }
 
         header {
@@ -36,12 +36,12 @@
             position: sticky;
             top: 0;
             z-index: 10;
-            width: 100%;
         }
 
         h1 {
             font-size: 50px;
             margin: 0;
+            display: inline-block;
             transition: transform 0.3s ease;
         }
 
@@ -57,8 +57,31 @@
             color: white;
         }
 
+        .nav-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .nav-button {
+            background-color: black;
+            color: white;
+            padding: 15px 25px;
+            border-radius: 20px;
+            font-size: 18px;
+            text-decoration: none;
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .nav-button:hover {
+            transform: scale(1.1);
+            box-shadow: 0px 0px 15px 4px #008CFF;
+            color: #008CFF;
+        }
+
         .clock {
             font-size: 20px;
+            color: white;
             font-weight: bold;
             background-color: #444;
             padding: 5px 10px;
@@ -71,97 +94,98 @@
             box-shadow: 0px 0px 15px 5px #008CFF;
         }
 
-        /* Proxy container */
-        .proxy-container {
+        /* Proxies Box */
+        .proxies-container {
+            margin: 20px auto;
+            width: 90%;
+            max-width: 800px;
             background-color: #222;
-            border-radius: 20px;
-            margin: 20px;
+            border-radius: 15px;
             padding: 20px;
-            max-width: 600px;
-            box-shadow: 0px 0px 10px 3px #444;
-            text-align: center;
+            box-shadow: 0px 0px 10px 2px #008CFF;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
         }
 
-        .proxy-container:hover {
+        .proxies-container:hover {
             transform: scale(1.02);
             box-shadow: 0px 0px 20px 5px #008CFF;
         }
 
-        .proxy-container h2 {
-            margin-bottom: 20px;
-            font-size: 32px;
+        .proxies-container h2 {
+            font-size: 30px;
             color: #00AFFF;
+            margin-bottom: 20px;
         }
 
-        /* Proxy buttons */
-        .proxy-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
+        .button-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
             gap: 15px;
+            margin-bottom: 20px;
         }
 
         .proxy-button {
-            width: 120px;
-            height: 60px;
-            line-height: 60px;
             background-color: black;
             color: white;
-            border: 2px solid #008CFF;
-            border-radius: 15px;
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 16px;
             text-decoration: none;
-            font-size: 18px;
             text-align: center;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .proxy-button:hover {
             transform: scale(1.1);
-            background-color: #008CFF;
-            box-shadow: 0px 0px 15px 5px #00AFFF;
-            color: white;
+            box-shadow: 0px 0px 15px 5px #008CFF;
+            color: #00AFFF;
         }
 
-        /* Pagination Buttons */
-        .pagination {
+        .nav-pages {
             display: flex;
             justify-content: center;
-            margin-top: 20px;
+            gap: 10px;
         }
 
-        .pagination-button {
-            padding: 8px 12px;
-            margin: 0 5px;
-            background-color: #333;
+        .page-button {
+            background-color: black;
             color: white;
-            border: 1px solid #008CFF;
-            border-radius: 5px;
+            padding: 10px 15px;
+            border-radius: 10px;
+            font-size: 14px;
             cursor: pointer;
-            transition: all 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
-        .pagination-button:hover {
-            background-color: #008CFF;
-            color: white;
+        .page-button:hover {
             transform: scale(1.1);
+            box-shadow: 0px 0px 15px 5px #008CFF;
+            color: #00AFFF;
         }
     </style>
-
-    <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Header -->
     <header>
         <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
+        <div class="nav-buttons">
+            <a href="#" class="nav-button">APPS</a>
+            <a href="#" class="nav-button">GAMES</a>
+            <a href="#" class="nav-button">PROXIES</a>
+            <a href="#" class="nav-button">EXPLOITS</a>
+            <a href="#" class="nav-button">SETTINGS</a>
+        </div>
         <div id="clock" class="clock"></div>
     </header>
 
-    <!-- Proxy Container -->
-    <div class="proxy-container">
+    <!-- Proxies Box -->
+    <div class="proxies-container" id="proxiesBox">
         <h2>Unblocked Proxies</h2>
-        <div id="proxy-buttons" class="proxy-buttons"></div>
-        <div id="pagination" class="pagination"></div>
+        <div class="button-grid" id="buttonGrid"></div>
+        <div class="nav-pages">
+            <button class="page-button" onclick="changePage(-1)">Previous</button>
+            <button class="page-button" onclick="changePage(1)">Next</button>
+        </div>
     </div>
 
     <script>
@@ -175,74 +199,44 @@
         setInterval(updateClock, 1000);
         updateClock();
 
-        // Proxy URLs
-        const proxyURLs = [
-            { name: "Proxy 1", url: "https://example1.com" },
-            { name: "Proxy 2", url: "https://example2.com" },
-            { name: "Proxy 3", url: "https://example3.com" },
-            { name: "Proxy 4", url: "https://example4.com" },
-            { name: "Proxy 5", url: "https://example5.com" },
-            { name: "Proxy 6", url: "https://example6.com" },
-            { name: "Proxy 7", url: "https://example7.com" },
-            { name: "Proxy 8", url: "https://example8.com" },
-            { name: "Proxy 9", url: "https://example9.com" },
-            { name: "Proxy 10", url: "https://example10.com" },
-            { name: "Proxy 11", url: "https://example11.com" },
-            { name: "Proxy 12", url: "https://example12.com" },
-            { name: "Proxy 13", url: "https://example13.com" },
-            { name: "Proxy 14", url: "https://example14.com" },
-            { name: "Proxy 15", url: "https://example15.com" },
-            { name: "Proxy 16", url: "https://example16.com" },
-            { name: "Proxy 17", url: "https://example17.com" },
-            { name: "Proxy 18", url: "https://example18.com" },
-            { name: "Proxy 19", url: "https://example19.com" },
-            { name: "Proxy 20", url: "https://example20.com" }
+        // Proxy buttons
+        const proxyUrls = [
+            "https://proxy1.com", "https://proxy2.com", "https://proxy3.com", "https://proxy4.com", "https://proxy5.com",
+            "https://proxy6.com", "https://proxy7.com", "https://proxy8.com", "https://proxy9.com", "https://proxy10.com",
+            "https://proxy11.com", "https://proxy12.com", "https://proxy13.com", "https://proxy14.com", "https://proxy15.com",
+            "https://proxy16.com", "https://proxy17.com", "https://proxy18.com", "https://proxy19.com", "https://proxy20.com"
         ];
 
-        const proxiesPerPage = 5;
-        let currentPage = 1;
+        let currentPage = 0;
 
-        function displayProxies(page) {
-            const startIndex = (page - 1) * proxiesPerPage;
-            const endIndex = startIndex + proxiesPerPage;
-            const proxiesToShow = proxyURLs.slice(startIndex, endIndex);
+        function renderButtons(page) {
+            const grid = document.getElementById('buttonGrid');
+            grid.innerHTML = "";
+            const start = page * 5;
+            const end = start + 5;
 
-            const buttonsContainer = document.getElementById('proxy-buttons');
-            buttonsContainer.innerHTML = "";
-
-            proxiesToShow.forEach(proxy => {
+            for (let i = start; i < end && i < proxyUrls.length; i++) {
                 const button = document.createElement('a');
-                button.href = proxy.url;
-                button.textContent = proxy.name;
-                button.classList.add('proxy-button');
+                button.href = proxyUrls[i];
+                button.textContent = `Proxy ${i + 1}`;
+                button.className = "proxy-button";
                 button.target = "_blank";
-                buttonsContainer.appendChild(button);
-            });
-
-            renderPagination();
-        }
-
-        function renderPagination() {
-            const pageCount = Math.ceil(proxyURLs.length / proxiesPerPage);
-            const paginationContainer = document.getElementById('pagination');
-            paginationContainer.innerHTML = "";
-
-            for (let i = 1; i <= pageCount; i++) {
-                const button = document.createElement('div');
-                button.textContent = i;
-                button.classList.add('pagination-button');
-                if (i === currentPage) {
-                    button.style.backgroundColor = "#008CFF";
-                }
-                button.addEventListener('click', () => {
-                    currentPage = i;
-                    displayProxies(currentPage);
-                });
-                paginationContainer.appendChild(button);
+                grid.appendChild(button);
             }
         }
 
-        displayProxies(currentPage);
+        function changePage(direction) {
+            const totalPages = Math.ceil(proxyUrls.length / 5);
+            currentPage += direction;
+
+            if (currentPage < 0) currentPage = 0;
+            if (currentPage >= totalPages) currentPage = totalPages - 1;
+
+            renderButtons(currentPage);
+        }
+
+        // Initial render
+        renderButtons(currentPage);
     </script>
 </body>
 </html>
