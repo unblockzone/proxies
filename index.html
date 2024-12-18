@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -180,12 +179,26 @@
             color: #008CFF;
         }
 
+        /* Logo styles */
+        .logo {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .logo:hover {
+            transform: scale(1.5); /* Zoom in when hovered */
+        }
     </style>
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
+        <h1 onclick="window.location.href='https://unblockzone.github.io/'">
+            <span class="white">UNBLOCK</span><span class="blue">ZONE</span>
+        </h1>
         <div class="nav-buttons">
             <a href="https://your-apps-url.com" class="nav-button">APPS</a>
             <a href="https://your-games-url.com" class="nav-button">GAMES</a>
@@ -193,7 +206,7 @@
             <a href="https://your-exploits-url.com" class="nav-button">EXPLOITS</a>
             <a href="https://unblockzone.github.io/settings/" class="nav-button">SETTINGS</a>
         </div>
-        <div id="clock" class="clock"></div>
+        <img src="https://cdn-icons-png.flaticon.com/512/61/61457.png" alt="Logo" class="logo" onclick="window.location.href='https://unblockzone.github.io/'">
     </header>
 
     <div class="snow-container" id="snowContainer"></div> <!-- Snow effect -->
