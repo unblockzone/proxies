@@ -31,7 +31,7 @@
             background-color: #333;
             display: flex;
             align-items: center;
-            justify-content: space-between;
+            justify-content: flex-end; /* Align items to the right */
             padding: 10px 20px;
             position: sticky;
             top: 0;
@@ -43,6 +43,7 @@
             margin: 0;
             display: inline-block;
             transition: transform 0.3s ease;
+            margin-right: auto; /* Push the header title to the left */
         }
 
         h1:hover {
@@ -59,7 +60,7 @@
 
         .nav-buttons {
             display: flex;
-            gap: 20px; /* Increased gap between buttons */
+            gap: 10px; /* Reduced gap between buttons */
         }
 
         .nav-button {
@@ -205,8 +206,8 @@
             <a href="https://unblockzone.github.io/proxies" class="nav-button">PROXIES</a>
             <a href="https://unblockzone.github.io/exploits" class="nav-button">EXPLOITS</a>
             <a href="https://unblockzone.github.io/settings/" class="nav-button">SETTINGS</a>
+            <a href="https://your-custom-url.com" class="nav-button">CONTACT</a> <!-- Contact button -->
         </div>
-        <img src="https://cdn-icons-png.flaticon.com/512/61/61457.png" alt="Logo" class="logo" onclick="window.location.href='https://unblockzone.github.io/'">
     </header>
 
     <div class="snow-container" id="snowContainer"></div> <!-- Snow effect -->
