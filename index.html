@@ -17,7 +17,9 @@
         }
 
         body {
-            background-color: black;
+            background: linear-gradient(-45deg, #000022, #001122, #000011, #001122);
+            background-size: 300% 300%;
+            animation: gradientAnimation 15s ease infinite;
             font-family: 'Bowlby One', sans-serif;
             color: white;
             display: flex;
@@ -25,6 +27,79 @@
             text-align: center;
             position: relative;
             overflow-y: auto;
+        }
+
+        @keyframes gradientAnimation {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* Floating Blue Dots Animation */
+        .dot {
+            position: absolute;
+            border-radius: 50%;
+            background-color: rgba(0, 140, 255, 0.8); /* Blue Glow */
+            animation: floatUp 5s ease-in-out infinite, glow 1.5s alternate infinite, fadeIn 1s forwards;
+            z-index: -1; /* Ensures dots are behind the content */
+        }
+
+        /* Different Sizes and Animations for Dots */
+        .dot:nth-child(1) { width: 8px; height: 8px; animation-delay: 0s; top: 100%; left: 10%; }
+        .dot:nth-child(2) { width: 10px; height: 10px; animation-delay: 0.2s; top: 100%; left: 15%; }
+        .dot:nth-child(3) { width: 15px; height: 15px; animation-delay: 0.4s; top: 100%; left: 50%; }
+        .dot:nth-child(4) { width: 18px; height: 18px; animation-delay: 0.6s; top: 100%; left: 70%; }
+        .dot:nth-child(5) { width: 20px; height: 20px; animation-delay: 0.8s; top: 100%; left: 80%; }
+        .dot:nth-child(6) { width: 7px; height: 7px; animation-delay: 1s; top: 100%; left: 20%; }
+        .dot:nth-child(7) { width: 12px; height: 12px; animation-delay: 1.2s; top: 100%; left: 25%; }
+        .dot:nth-child(8) { width: 14px; height: 14px; animation-delay: 1.4s; top: 100%; left: 40%; }
+        .dot:nth-child(9) { width: 25px; height: 25px; animation-delay: 1.6s; top: 100%; left: 60%; }
+        .dot:nth-child(10) { width: 10px; height: 10px; animation-delay: 1.8s; top: 100%; left: 80%; }
+        .dot:nth-child(11) { width: 16px; height: 16px; animation-delay: 2s; top: 100%; left: 85%; }
+        .dot:nth-child(12) { width: 12px; height: 12px; animation-delay: 2.2s; top: 100%; left: 15%; }
+        .dot:nth-child(13) { width: 22px; height: 22px; animation-delay: 2.4s; top: 100%; left: 65%; }
+        .dot:nth-child(14) { width: 8px; height: 8px; animation-delay: 2.6s; top: 100%; left: 30%; }
+        .dot:nth-child(15) { width: 18px; height: 18px; animation-delay: 2.8s; top: 100%; left: 55%; }
+        .dot:nth-child(16) { width: 24px; height: 24px; animation-delay: 3s; top: 100%; left: 10%; }
+        .dot:nth-child(17) { width: 20px; height: 20px; animation-delay: 3.2s; top: 100%; left: 50%; }
+        .dot:nth-child(18) { width: 16px; height: 16px; animation-delay: 3.4s; top: 100%; left: 30%; }
+        .dot:nth-child(19) { width: 14px; height: 14px; animation-delay: 3.6s; top: 100%; left: 50%; }
+        .dot:nth-child(20) { width: 28px; height: 28px; animation-delay: 3.8s; top: 100%; left: 75%; }
+
+        /* Keyframes for dot floating upwards */
+        @keyframes floatUp {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-100vh); /* Moves the dot upwards */
+            }
+        }
+
+        /* Keyframes for glowing effect */
+        @keyframes glow {
+            0% {
+                box-shadow: 0 0 5px rgba(0, 140, 255, 0.8), 0 0 10px rgba(0, 140, 255, 0.6);
+            }
+            100% {
+                box-shadow: 0 0 15px rgba(0, 140, 255, 1), 0 0 30px rgba(0, 140, 255, 0.8);
+            }
+        }
+
+        /* Keyframes for fading in */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
         }
 
         header {
@@ -119,6 +194,26 @@
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Floating Dots -->
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+
     <header>
         <h1 onclick="window.location.href='https://unblockzone.github.io/'">
             <span class="white">UNBLOCK</span><span class="blue">ZONE</span>
