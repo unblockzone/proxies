@@ -41,11 +41,11 @@
             }
         }
 
-        /* Floating Blue Dots Animation */
+        /* Floating Red Dots Animation */
         .dot {
             position: absolute;
             border-radius: 50%;
-            background-color: rgba(0, 140, 255, 0.8); /* Blue Glow */
+            background-color: rgba(255, 0, 0, 0.8); /* Red Glow */
             animation: floatUp 5s ease-in-out infinite, glow 1.5s alternate infinite, fadeIn 1s forwards;
             z-index: -1; /* Ensures dots are behind the content */
         }
@@ -85,10 +85,10 @@
         /* Keyframes for glowing effect */
         @keyframes glow {
             0% {
-                box-shadow: 0 0 5px rgba(0, 140, 255, 0.8), 0 0 10px rgba(0, 140, 255, 0.6);
+                box-shadow: 0 0 5px rgba(255, 0, 0, 0.8), 0 0 10px rgba(255, 0, 0, 0.6);
             }
             100% {
-                box-shadow: 0 0 15px rgba(0, 140, 255, 1), 0 0 30px rgba(0, 140, 255, 0.8);
+                box-shadow: 0 0 15px rgba(255, 0, 0, 1), 0 0 30px rgba(255, 0, 0, 0.8);
             }
         }
 
@@ -125,8 +125,8 @@
             transform: scale(1.1);
         }
 
-        .blue {
-            color: blue;
+        .red {
+            color: red; /* Changed to red */
         }
 
         .white {
@@ -152,8 +152,8 @@
         .nav-button:hover {
             transform: scale(1.1);
             background-color: black;
-            box-shadow: 0px 0px 15px 4px #008CFF;
-            color: #008CFF;
+            box-shadow: 0px 0px 15px 4px #FF0000; /* Red glow */
+            color: #FF0000; /* Red glow text */
         }
 
         .square-container {
@@ -189,6 +189,11 @@
         .square:hover img {
             transform: scale(1.2);
         }
+
+        .background-section {
+            background: linear-gradient(135deg, #1a0000, #2b1a1a);
+            padding: 20px;
+        }
     </style>
 
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
@@ -216,7 +221,7 @@
 
     <header>
         <h1 onclick="window.location.href='https://unblockzone.github.io/'">
-            <span class="white">UNBLOCK</span><span class="blue">ZONE</span>
+            <span class="white">UNBLOCK</span><span class="red">ZONE</span>
         </h1>
         <div class="nav-buttons">
             <a href="https://unblockzone.github.io/apps" class="nav-button">APPS</a>
@@ -228,26 +233,28 @@
         </div>
     </header>
 
-    <div class="square-container">
-        <div class="square">
-            <a href="https://unblockzone.github.io/croxy-proxy/">
-                <img src="https://c10.patreonusercontent.com/4/patreon-media/p/campaign/5066714/ec6eba700ac94aac932b35a4f4255ddd/eyJoIjoxMDgwLCJ3IjoxMDgwfQ%3D%3D/7.png?token-time=1737331200&token-hash=O_ukOgYVGmEB6LYN8Y9m_qQW5tHyX_xvvAxiF4YxAzA%3D" alt="App 1">
-            </a>
-        </div>
-        <div class="square">
-            <a href="https://unblockzone.github.io/snorlaxs-cave/">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRawB0VX_qSg7b0G9ElSQPW6uqi71ev8G9dWg&s" alt="App 2">
-            </a>
-        </div>
-        <div class="square">
-            <a href="https://unblockzone.github.io/abyss/">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1UXuho6M8JtXU32GIspaMIPuv_R7FkfXbOA&s" alt="App 3">
-            </a>
-        </div>
-        <div class="square">
-            <a href="https://unblockzone.github.io/rammerhead/">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs1oft9Mk72vteK2tTII9x90-4cySNL7BZtw&s" alt="App 4">
-            </a>
+    <div class="background-section">
+        <div class="square-container">
+            <div class="square">
+                <a href="https://unblockzone.github.io/croxy-proxy/">
+                    <img src="https://c10.patreonusercontent.com/4/patreon-media/p/campaign/5066714/ec6eba700ac94aac932b35a4f4255ddd/eyJoIjoxMDgwLCJ3IjoxMDgwfQ%3D%3D/7.png?token-time=1737331200&token-hash=O_ukOgYVGmEB6LYN8Y9m_qQW5tHyX_xvvAxiF4YxAzA%3D" alt="App 1">
+                </a>
+            </div>
+            <div class="square">
+                <a href="https://unblockzone.github.io/snorlaxs-cave/">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRawB0VX_qSg7b0G9ElSQPW6uqi71ev8G9dWg&s" alt="App 2">
+                </a>
+            </div>
+            <div class="square">
+                <a href="https://unblockzone.github.io/abyss/">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1UXuho6M8JtXU32GIspaMIPuv_R7FkfXbOA&s" alt="App 3">
+                </a>
+            </div>
+            <div class="square">
+                <a href="https://unblockzone.github.io/rammerhead/">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs1oft9Mk72vteK2tTII9x90-4cySNL7BZtw&s" alt="App 4">
+                </a>
+            </div>
         </div>
     </div>
 
