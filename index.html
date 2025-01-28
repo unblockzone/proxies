@@ -3,31 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proxies</title>
+    <title>Proxy</title>
 
+    <!-- Temporary Favicon -->
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/61/61457.png" type="image/x-icon">
 
     <style>
-        /* Ensure the page takes the full height */
+        /* Prevent scrolling */
         html, body {
             margin: 0;
             padding: 0;
             height: 100%;
-            display: flex;
-            flex-direction: column;
+            overflow: hidden;
         }
 
         body {
+            background: linear-gradient(to bottom, lightblue, black);
             font-family: 'Bowlby One', sans-serif;
             color: white;
-            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            text-align: center;
+            position: relative;
         }
 
         header {
             background-color: #333;
             display: flex;
             align-items: center;
-            justify-content: flex-end;
+            justify-content: space-between;
             padding: 10px 20px;
             position: sticky;
             top: 0;
@@ -37,27 +41,37 @@
         h1 {
             font-size: 50px;
             margin: 0;
-            display: inline-block;
-            margin-right: auto;
-            cursor: pointer;
             transition: transform 0.3s ease;
+            cursor: pointer;
         }
 
         h1:hover {
             transform: scale(1.1);
         }
 
-        .red {
-            color: red;
+        .blue {
+            color: lightblue;
         }
 
         .white {
             color: white;
         }
 
+        .logo {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .logo:hover {
+            transform: scale(1.2);
+        }
+
         .nav-buttons {
             display: flex;
-            gap: 10px;
+            gap: 20px;
         }
 
         .nav-button {
@@ -67,125 +81,30 @@
             border-radius: 20px;
             font-size: 18px;
             text-decoration: none;
-            text-align: center;
-            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .nav-button:hover {
             transform: scale(1.1);
-            background-color: black;
-            box-shadow: 0px 0px 15px 4px #FF0000;
-            color: #FF0000;
-        }
-
-        .background-section {
-            flex: 1; /* Fills the remaining space below the header */
-            background: linear-gradient(135deg, #1a0000, #2b1a1a);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-start;
-            padding: 20px;
-            overflow-y: auto;
-        }
-
-        .square-container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 20px 0;
-        }
-
-        .square {
-            width: 300px;
-            height: 300px;
-            background-color: #444;
-            border-radius: 15px;
-            margin: 10px;
-            overflow: hidden;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .square img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
-        }
-
-        .square:hover {
-            transform: scale(1.1);
-        }
-
-        .square:hover img {
-            transform: scale(1.2);
+            box-shadow: 0px 0px 15px 4px lightblue;
+            color: lightblue;
         }
     </style>
-
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
         <h1 onclick="window.location.href='https://unblockzone.github.io/'">
-            <span class="white">UNBLOCK</span><span class="red">ZONE</span>
+            <span class="white">UNBLOCK</span><span class="blue">ZONE</span>
         </h1>
         <div class="nav-buttons">
-            <a href="https://unblockzone.github.io/apps" class="nav-button">APPS</a>
-            <a href="https://unblockzone.github.io/games" class="nav-button">GAMES</a>
-            <a href="https://unblockzone.github.io/proxies" class="nav-button">PROXIES</a>
-            <a href="https://unblockzone.github.io/exploits" class="nav-button">EXPLOITS</a>
-            <a href="https://unblockzone.github.io/settings" class="nav-button">SETTINGS</a>
-            <a href="https://unblockzone.github.io/contact" class="nav-button">CONTACT</a>
+            <a href="https://unblockzone.github.io/apps/" class="nav-button">APPS</a>
+            <a href="https://unblockzone.github.io/games/" class="nav-button">GAMES</a>
+            <a href="https://unblockzone.github.io/proxies/" class="nav-button">PROXIES</a>
+            <a href="https://unblockzone.github.io/exploits/" class="nav-button">EXPLOITS</a>
+            <a href="https://unblockzone.github.io/settings/" class="nav-button">SETTINGS</a>
         </div>
+        <img src="https://cdn-icons-png.flaticon.com/512/61/61457.png" alt="Logo" class="logo" onclick="window.location.href='https://unblockzone.github.io/'">
     </header>
-
-    <div class="background-section">
-        <div class="square-container">
-            <div class="square">
-                <a href="https://unblockzone.github.io/croxy-proxy/">
-                    <img src="https://pbs.twimg.com/profile_images/995213134062346240/pGlD0hEc_400x400.jpg" alt="App 1">
-                </a>
-            </div>
-            <div class="square">
-                <a href="https://unblockzone.github.io/snorlaxs-cave/">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRawB0VX_qSg7b0G9ElSQPW6uqi71ev8G9dWg&s" alt="App 2">
-                </a>
-            </div>
-            <div class="square">
-                <a href="https://unblockzone.github.io/abyss/">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1UXuho6M8JtXU32GIspaMIPuv_R7FkfXbOA&s" alt="App 3">
-                </a>
-            </div>
-            <div class="square">
-                <a href="https://unblockzone.github.io/rammerhead/">
-                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSs1oft9Mk72vteK2tTII9x90-4cySNL7BZtw&s" alt="App 4">
-                </a>
-            </div>
-        </div>
-
-        <div class="square-container">
-            <div class="square">
-                <a href="https://unblockzone.github.io/wrnd/">
-                    <img src="https://discord.do/wp-content/uploads/2024/05/wrnd.jpg" alt="App 5">
-                </a>
-            </div>
-            <div class="square">
-                <a href="https://unblockzone.github.io/light/">
-                    <img src="https://images.vexels.com/media/users/3/288006/isolated/preview/d653c527598bd8303ab4a05d73686dd2-light-bulb-continuous-line-color.png" alt="App 6">
-                </a>
-            </div>
-            <div class="square">
-                <a href="https://unblockzone.github.io/brunisixl/">
-                    <img src="https://avatars.githubusercontent.com/u/164114561?v=4" alt="App 7">
-                </a>
-            </div>
-            <div class="square">
-                <a href="https://unblockzone.github.io/shadow/">
-                    <img src="https://i.pinimg.com/originals/14/37/4f/14374f6454e77e82c48051a3bb61dd9c.jpg" alt="App 8">
-                </a>
-            </div>
-        </div>
-    </div>
 </body>
 </html>
