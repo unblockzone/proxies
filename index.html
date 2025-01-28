@@ -3,9 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Proxy</title>
+    <title>Apps</title>
 
-    <!-- Temporary Favicon -->
     <link rel="icon" href="https://cdn-icons-png.flaticon.com/512/61/61457.png" type="image/x-icon">
 
     <style>
@@ -14,17 +13,26 @@
             margin: 0;
             padding: 0;
             height: 100%;
-            overflow: hidden;
+            overflow-x: hidden;
+            overflow-y: auto;
         }
 
         body {
-            background: linear-gradient(to bottom, lightblue, black);
+            background: radial-gradient(circle, lightblue, black, lightblue, black);
+            background-size: 300% 300%;
+            animation: gradientAnimation 15s infinite alternate;
             font-family: 'Bowlby One', sans-serif;
             color: white;
             display: flex;
             flex-direction: column;
+            align-items: center;
             text-align: center;
-            position: relative;
+        }
+
+        @keyframes gradientAnimation {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
         }
 
         header {
@@ -32,7 +40,8 @@
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 10px 20px;
+            padding: 10px 0;
+            width: 100%;
             position: sticky;
             top: 0;
             z-index: 10;
@@ -41,8 +50,9 @@
         h1 {
             font-size: 50px;
             margin: 0;
+            margin-left: 20px;
+            display: inline-block;
             transition: transform 0.3s ease;
-            cursor: pointer;
         }
 
         h1:hover {
@@ -50,28 +60,17 @@
         }
 
         .blue {
-            color: lightblue;
+            color: lightblue; /* Change "ZONE" to light blue */
         }
 
         .white {
             color: white;
         }
 
-        .logo {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-            cursor: pointer;
-        }
-
-        .logo:hover {
-            transform: scale(1.2);
-        }
-
         .nav-buttons {
             display: flex;
-            gap: 20px;
+            gap: 10px;
+            margin-right: 20px;
         }
 
         .nav-button {
@@ -81,30 +80,93 @@
             border-radius: 20px;
             font-size: 18px;
             text-decoration: none;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: center;
+            transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
         }
 
         .nav-button:hover {
             transform: scale(1.1);
-            box-shadow: 0px 0px 15px 4px lightblue;
-            color: lightblue;
+            background-color: black;
+            box-shadow: 0px 0px 15px 4px lightblue; /* Light blue glow on hover */
+            color: lightblue; /* Change text color to light blue on hover */
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            .nav-buttons {
+                display: block;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .nav-button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+        .square-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 20px 0;
+        }
+
+        .square {
+            width: 300px;
+            height: 300px;
+            background-color: #444;
+            border-radius: 15px;
+            margin: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .square img {
+            display: none; /* Remove app icons by hiding the images */
+        }
+
+        .square:hover {
+            transform: scale(1.1);
         }
     </style>
+
     <link href="https://fonts.googleapis.com/css2?family=Bowlby+One&family=Roboto:wght@700&display=swap" rel="stylesheet">
 </head>
 <body>
     <header>
-        <h1 onclick="window.location.href='https://unblockzone.github.io/'">
-            <span class="white">UNBLOCK</span><span class="blue">ZONE</span>
-        </h1>
+        <a href="https://unblockzone.github.io">
+            <h1><span class="white">UNBLOCK</span><span class="blue">ZONE</span></h1>
+        </a>
         <div class="nav-buttons">
-            <a href="https://unblockzone.github.io/apps/" class="nav-button">APPS</a>
-            <a href="https://unblockzone.github.io/games/" class="nav-button">GAMES</a>
-            <a href="https://unblockzone.github.io/proxies/" class="nav-button">PROXIES</a>
-            <a href="https://unblockzone.github.io/exploits/" class="nav-button">EXPLOITS</a>
+            <a href="https://unblockzone.github.io/apps" class="nav-button">APPS</a>
+            <a href="https://unblockzone.github.io/games" class="nav-button">GAMES</a>
+            <a href="https://unblockzone.github.io/proxies" class="nav-button">PROXIES</a>
+            <a href="https://unblockzone.github.io/exploits" class="nav-button">EXPLOITS</a>
             <a href="https://unblockzone.github.io/settings/" class="nav-button">SETTINGS</a>
+            <a href="https://unblockzone.github.io/contact" class="nav-button">CONTACT</a>
         </div>
-        <img src="https://cdn-icons-png.flaticon.com/512/61/61457.png" alt="Logo" class="logo" onclick="window.location.href='https://unblockzone.github.io/'">
     </header>
+
+    <!-- Three Rows of Apps -->
+    <div class="square-container">
+        <!-- Empty squares for the layout -->
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+        <div class="square"></div>
+    </div>
 </body>
 </html>
