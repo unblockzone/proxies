@@ -91,25 +91,9 @@
             color: lightblue;
         }
 
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 40px;
-            }
-
-            .nav-buttons {
-                display: block;
-                text-align: center;
-                margin-top: 10px;
-            }
-
-            .nav-button {
-                width: 100%;
-                margin-bottom: 10px;
-            }
-        }
-
+        /* Tabs Container */
         .tabs-container {
-            width: 90%;
+            width: 100%;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -117,18 +101,20 @@
             position: relative;
         }
 
+        /* Tabs Bar */
         .tabs {
             display: flex;
-            gap: 10px;
+            gap: 5px;
             overflow-x: auto;
             padding: 10px;
             background: rgba(0, 0, 0, 0.5);
             border-radius: 10px;
-            width: 100%;
-            max-width: 800px;
+            width: 90%;
+            max-width: 900px;
             position: relative;
         }
 
+        /* Individual Tab */
         .tab {
             display: flex;
             align-items: center;
@@ -137,12 +123,19 @@
             border-radius: 10px;
             cursor: pointer;
             transition: background 0.3s ease;
+            min-width: 120px;
+            justify-content: space-between;
+        }
+
+        .tab.active {
+            background: rgba(255, 255, 255, 0.4);
         }
 
         .tab:hover {
             background: rgba(255, 255, 255, 0.3);
         }
 
+        /* Close Button */
         .tab-close {
             margin-left: 10px;
             background: red;
@@ -162,19 +155,29 @@
             background: darkred;
         }
 
-        .tab-content {
-            width: 100%;
-            max-width: 800px;
-            height: 400px;
-            background: rgba(255, 255, 255, 0.1);
-            margin-top: 10px;
-            border-radius: 10px;
-            padding: 20px;
+        /* Search Bar for Tabs */
+        .search-container {
+            width: 90%;
+            max-width: 900px;
             display: none;
+            margin-top: 10px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
         }
 
-        .tab-content.active {
+        .search-container.active {
             display: block;
+        }
+
+        .search-bar {
+            width: 100%;
+            padding: 10px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            text-align: center;
+            outline: none;
         }
 
         .new-tab-button {
@@ -214,10 +217,10 @@
 
     <div class="tabs-container">
         <div class="tabs" id="tabs">
-            <!-- Tabs will be added dynamically here -->
+            <!-- Tabs will be added dynamically -->
         </div>
-        <div id="tab-contents">
-            <!-- Tab content will be added dynamically here -->
+        <div id="search-areas">
+            <!-- Search bars will be added dynamically -->
         </div>
         <button class="new-tab-button" onclick="addTab()">New Tab</button>
     </div>
@@ -228,32 +231,40 @@
         function addTab() {
             tabCount++;
             const tabs = document.getElementById('tabs');
-            const tabContents = document.getElementById('tab-contents');
+            const searchAreas = document.getElementById('search-areas');
 
             const tab = document.createElement('div');
             tab.classList.add('tab');
             tab.dataset.tab = `tab${tabCount}`;
-            tab.innerHTML = `Tab ${tabCount} <button class="tab-close" onclick="removeTab('${tabCount}')">×</button>`;
+            tab.innerHTML = `Search <button class="tab-close" onclick="removeTab('${tabCount}')">×</button>`;
             tab.onclick = () => showTab(tabCount);
             tabs.appendChild(tab);
 
-            const tabContent = document.createElement('div');
-            tabContent.classList.add('tab-content');
-            tabContent.id = `tab${tabCount}`;
-            tabContent.innerHTML = `<p>Content for Tab ${tabCount}</p>`;
-            tabContents.appendChild(tabContent);
+            const searchContainer = document.createElement('div');
+            searchContainer.classList.add('search-container');
+            searchContainer.id = `search${tabCount}`;
+            searchContainer.innerHTML = `
+                <input type="text" class="search-bar" placeholder="Search..." onkeydown="if(event.key==='Enter') search('${tabCount}', this.value)">
+            `;
+            searchAreas.appendChild(searchContainer);
 
             showTab(tabCount);
         }
 
         function removeTab(id) {
             document.querySelector(`.tab[data-tab="tab${id}"]`).remove();
-            document.getElementById(`tab${id}`).remove();
+            document.getElementById(`search${id}`).remove();
         }
 
         function showTab(id) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.getElementById(`tab${id}`).classList.add('active');
+            document.querySelectorAll('.search-container').forEach(s => s.classList.remove('active'));
+            document.getElementById(`search${id}`).classList.add('active');
+        }
+
+        function search(id, query) {
+            if (query.trim() !== "") {
+                window.location.href = `https://unblockzone.github.io/google-search/?q=${encodeURIComponent(query)}`;
+            }
         }
     </script>
 </body>
