@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -60,7 +61,7 @@
         }
 
         .blue {
-            color: lightblue;
+            color: lightblue; /* Change "ZONE" to light blue */
         }
 
         .white {
@@ -87,114 +88,32 @@
         .nav-button:hover {
             transform: scale(1.1);
             background-color: black;
-            box-shadow: 0px 0px 15px 4px lightblue;
-            color: lightblue;
+            box-shadow: 0px 0px 15px 4px lightblue; /* Light blue glow on hover */
+            color: lightblue; /* Change text color to light blue on hover */
         }
 
-        /* Tabs Container */
-        .tabs-container {
-            width: 100%;
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 40px;
+            }
+
+            .nav-buttons {
+                display: block;
+                text-align: center;
+                margin-top: 10px;
+            }
+
+            .nav-button {
+                width: 100%;
+                margin-bottom: 10px;
+            }
+        }
+
+        .square-container {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin-top: 20px;
-            position: relative;
-        }
-
-        /* Tabs Bar */
-        .tabs {
-            display: flex;
-            gap: 5px;
-            overflow-x: auto;
-            padding: 10px;
-            background: rgba(0, 0, 0, 0.5);
-            border-radius: 10px;
-            width: 90%;
-            max-width: 900px;
-            position: relative;
-        }
-
-        /* Individual Tab */
-        .tab {
-            display: flex;
-            align-items: center;
-            background: rgba(255, 255, 255, 0.2);
-            padding: 10px 15px;
-            border-radius: 10px;
-            cursor: pointer;
-            transition: background 0.3s ease;
-            min-width: 120px;
-            justify-content: space-between;
-        }
-
-        .tab.active {
-            background: rgba(255, 255, 255, 0.4);
-        }
-
-        .tab:hover {
-            background: rgba(255, 255, 255, 0.3);
-        }
-
-        /* Close Button */
-        .tab-close {
-            margin-left: 10px;
-            background: red;
-            border: none;
-            color: white;
-            cursor: pointer;
-            border-radius: 50%;
-            width: 20px;
-            height: 20px;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            font-weight: bold;
-        }
-
-        .tab-close:hover {
-            background: darkred;
-        }
-
-        /* Search Bar for Tabs */
-        .search-container {
-            width: 90%;
-            max-width: 900px;
-            display: none;
-            margin-top: 10px;
-            padding: 10px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 10px;
-        }
-
-        .search-container.active {
-            display: block;
-        }
-
-        .search-bar {
-            width: 100%;
-            padding: 10px;
-            font-size: 18px;
-            border: none;
-            border-radius: 5px;
-            text-align: center;
-            outline: none;
-        }
-
-        .new-tab-button {
-            margin-top: 10px;
-            padding: 10px 20px;
-            font-size: 18px;
-            border: none;
-            background: lightblue;
-            color: black;
-            cursor: pointer;
-            border-radius: 10px;
-            transition: transform 0.3s ease, background 0.3s ease;
-        }
-
-        .new-tab-button:hover {
-            transform: scale(1.1);
-            background: white;
+            flex-wrap: wrap;
+            margin: 20px 0;
         }
     </style>
 
@@ -215,57 +134,9 @@
         </div>
     </header>
 
-    <div class="tabs-container">
-        <div class="tabs" id="tabs">
-            <!-- Tabs will be added dynamically -->
-        </div>
-        <div id="search-areas">
-            <!-- Search bars will be added dynamically -->
-        </div>
-        <button class="new-tab-button" onclick="addTab()">New Tab</button>
+    <!-- Empty container -->
+    <div class="square-container">
+        <!-- No squares included -->
     </div>
-
-    <script>
-        let tabCount = 0;
-
-        function addTab() {
-            tabCount++;
-            const tabs = document.getElementById('tabs');
-            const searchAreas = document.getElementById('search-areas');
-
-            const tab = document.createElement('div');
-            tab.classList.add('tab');
-            tab.dataset.tab = `tab${tabCount}`;
-            tab.innerHTML = `Search <button class="tab-close" onclick="removeTab('${tabCount}')">×</button>`;
-            tab.onclick = () => showTab(tabCount);
-            tabs.appendChild(tab);
-
-            const searchContainer = document.createElement('div');
-            searchContainer.classList.add('search-container');
-            searchContainer.id = `search${tabCount}`;
-            searchContainer.innerHTML = `
-                <input type="text" class="search-bar" placeholder="Search..." onkeydown="if(event.key==='Enter') search('${tabCount}', this.value)">
-            `;
-            searchAreas.appendChild(searchContainer);
-
-            showTab(tabCount);
-        }
-
-        function removeTab(id) {
-            document.querySelector(`.tab[data-tab="tab${id}"]`).remove();
-            document.getElementById(`search${id}`).remove();
-        }
-
-        function showTab(id) {
-            document.querySelectorAll('.search-container').forEach(s => s.classList.remove('active'));
-            document.getElementById(`search${id}`).classList.add('active');
-        }
-
-        function search(id, query) {
-            if (query.trim() !== "") {
-                window.location.href = `https://unblockzone.github.io/google-search/?q=${encodeURIComponent(query)}`;
-            }
-        }
-    </script>
 </body>
 </html>
