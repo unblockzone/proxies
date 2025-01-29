@@ -60,7 +60,7 @@
         }
 
         .blue {
-            color: lightblue; /* Change "ZONE" to light blue */
+            color: lightblue;
         }
 
         .white {
@@ -87,8 +87,8 @@
         .nav-button:hover {
             transform: scale(1.1);
             background-color: black;
-            box-shadow: 0px 0px 15px 4px lightblue; /* Light blue glow on hover */
-            color: lightblue; /* Change text color to light blue on hover */
+            box-shadow: 0px 0px 15px 4px lightblue;
+            color: lightblue;
         }
 
         @media (max-width: 768px) {
@@ -108,11 +108,90 @@
             }
         }
 
-        .square-container {
+        .tabs-container {
+            width: 90%;
             display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .tabs {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .tab {
+            display: flex;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 10px 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .tab:hover {
+            background: rgba(255, 255, 255, 0.3);
+        }
+
+        .tab-close {
+            margin-left: 10px;
+            background: red;
+            border: none;
+            color: white;
+            cursor: pointer;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            flex-wrap: wrap;
-            margin: 20px 0;
+            font-weight: bold;
+        }
+
+        .tab-close:hover {
+            background: darkred;
+        }
+
+        .tab-content {
+            width: 100%;
+            max-width: 800px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            margin-top: 10px;
+            border-radius: 10px;
+            padding: 20px;
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .new-tab-button {
+            margin-top: 10px;
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            background: lightblue;
+            color: black;
+            cursor: pointer;
+            border-radius: 10px;
+            transition: transform 0.3s ease, background 0.3s ease;
+        }
+
+        .new-tab-button:hover {
+            transform: scale(1.1);
+            background: white;
         }
     </style>
 
@@ -133,9 +212,49 @@
         </div>
     </header>
 
-    <!-- Empty container -->
-    <div class="square-container">
-        <!-- No squares included -->
+    <div class="tabs-container">
+        <div class="tabs" id="tabs">
+            <!-- Tabs will be added dynamically here -->
+        </div>
+        <div id="tab-contents">
+            <!-- Tab content will be added dynamically here -->
+        </div>
+        <button class="new-tab-button" onclick="addTab()">New Tab</button>
     </div>
+
+    <script>
+        let tabCount = 0;
+
+        function addTab() {
+            tabCount++;
+            const tabs = document.getElementById('tabs');
+            const tabContents = document.getElementById('tab-contents');
+
+            const tab = document.createElement('div');
+            tab.classList.add('tab');
+            tab.dataset.tab = `tab${tabCount}`;
+            tab.innerHTML = `Tab ${tabCount} <button class="tab-close" onclick="removeTab('${tabCount}')">×</button>`;
+            tab.onclick = () => showTab(tabCount);
+            tabs.appendChild(tab);
+
+            const tabContent = document.createElement('div');
+            tabContent.classList.add('tab-content');
+            tabContent.id = `tab${tabCount}`;
+            tabContent.innerHTML = `<p>Content for Tab ${tabCount}</p>`;
+            tabContents.appendChild(tabContent);
+
+            showTab(tabCount);
+        }
+
+        function removeTab(id) {
+            document.querySelector(`.tab[data-tab="tab${id}"]`).remove();
+            document.getElementById(`tab${id}`).remove();
+        }
+
+        function showTab(id) {
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
+            document.getElementById(`tab${id}`).classList.add('active');
+        }
+    </script>
 </body>
 </html>
